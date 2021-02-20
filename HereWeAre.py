@@ -17,29 +17,30 @@ sheet1 = wb.create_sheet(index=1, title='2019_2020')
 sheet0['B2'].value = 'Welcome to FPL data'
 
 #Import API data and retrieve team name
-url = "https://fantasy.premierleague.com/api/leagues-h2h-matches/league/585139/"
+url = "https://fantasy.premierleague.com/api/leagues-h2h-matches/league/585139/?event=1"
 json_history = requests.get(url).json()
 
 # Import gameweek history and insert data in sheet
-header1 = ['id', 'GW', 'HName', 'AName']
+header1 = ['GW', 'HName', 'AName', 'Htotal', 'Atotal']
 headerrow = 1
-for key in range(4):
+for key in range(5):
     sheet1.cell(row=headerrow, column=key + 3).value = str(header1[key])
 
 # To make a list of overall rank for inserting change in rank symbols
 for each in json_history["results"]:
-    ide = each['id']
-    Gameweek = each['event']
+    g_w = each['event']
     Home = each['entry_1_name']
     Away = each['entry_2_name']
+    Result1 = each['entry_1_total']
+    Result2 = each['entry_2_total']
 
-history_list = [ide, Gameweek, Home, Away]
-for rownum in range(Gameweek + 1, Gameweek + 2):
-    sheet1.cell(row=rownum, column=3).value = ide
-for rownum in range(Gameweek + 1, Gameweek + 2):
-    sheet1.cell(row=rownum, column=4).value = Gameweek
-for rownum in range(Gameweek + 1, Gameweek + 2):
-    for key in range(2, 4):
+history_list = [g_w, Home, Away, Result1, Result2]
+for rownum in range(g_w + 1, g_w + 2):
+    sheet1.cell(row=rownum, column=3).value = g_w
+for rownum in range(g_w + 1, g_w + 2):
+    sheet1.cell(row=rownum, column=4).value = Home
+for rownum in range(g_w + 1, g_w + 2):
+    for key in range(2, 5):
         sheet1.cell(row=rownum, column=key + 3).value = history_list[key]
 
 #Save Workbook
