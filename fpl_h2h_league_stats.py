@@ -5,7 +5,7 @@ import openpyxl
 #Function to generate url endpoint for api
 def GetEndpoints():
     apis = []
-    baseEndpoint = "https://fantasy.premierleague.com/api/leagues-h2h-matches/league/585139/"    
+    baseEndpoint = "https://fantasy.premierleague.com/api/leagues-h2h-matches/league/556449/"    
     for i in range(1, 8):
         if i == 1 :
           print(baseEndpoint)
@@ -68,8 +68,8 @@ def writeJsonToExcel(sheet1,json_history):
 #Create excel workbook,create sheets
 global g_w,wb,sheet0,sheet1  
 wb = openpyxl.Workbook()
-sheet0 = wb.create_sheet(index=0, title='Read_Me')
-sheet1 = wb.create_sheet(index=1, title='2019_2020')
+sheet0 = wb.create_sheet(index=0, title='Intro Page')
+sheet1 = wb.create_sheet(index=1, title='Fantasy')
 
 #Create Read me sheet
 sheet0['B2'].value = 'Welcome to FPL data'
@@ -83,4 +83,4 @@ for key in range(5):
 #Get all apis, get data from each and write to excel
 GetAndWriteDataToExcel()
 #Save Workbook
-wb.save("FPL.xlsx")
+wb.save("FPL2022.xlsx")
