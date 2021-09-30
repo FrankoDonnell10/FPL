@@ -4,7 +4,7 @@ Fantasy Premier League public API to get team and league data.
 fpl_h2h files target head to head league data and saves it to an Excel file.
 The only thing that requires change is the league code in he URL's for the league you are targetting. 
 
-fpl_h2h_league_stats returns results from each game week frommy uor head to head mini league.
+fpl_h2h_league_stats returns results from each game week frommy uor head to head mini league. Substitue your head to head league code into the URL in line 8 to return data related to your won league. This can be found on Fanatsy Premier League website. when you open you head to head league, the code should be in the URL e.g https://fantasy.premierleague.com/leagues/556449/matches/h
 
 fpl_h2h_fixtures does teh same as teh above bu the output inot excel has a different format.
 
