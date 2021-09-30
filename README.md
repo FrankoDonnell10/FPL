@@ -1,5 +1,5 @@
 # FPL
-Trial and Error until it works
+Fantasy Premier League public API to get team and league data.
 
 fpl_h2h files target head to head league data and saves it to an Excel file.
 The only thing that requires change is the league code in he URL's for the league you are targetting. 
