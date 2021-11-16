@@ -7,7 +7,7 @@ import pandas as pd
 def GetEndpoints():
     apis = []
     baseEndpoint = "https://fantasy.premierleague.com/api/leagues-h2h-matches/league/556449/"    
-    for i in range(1, 8):
+    for i in range(1, 7):
         if i == 1 :
           print(baseEndpoint)
           apis.append(baseEndpoint)
@@ -16,6 +16,20 @@ def GetEndpoints():
             print(apiEndpoint)
             apis.append(apiEndpoint)
     return apis
+
+#Get all response jsons and append to one whole json
+def GetAndAppendAllToOneJson():
+    global combinedJson
+    #if it doesn't work, comment out these two lines below.
+    combinedJson = {}
+    combinedJson['Results'] = ''
+    apis = GetEndpoints()
+    for api in apis:
+        response = GetAPIResponse(api)
+        resultsjson = response['results']
+        combinedJson.append(resultsjson)
+    return combinedJson
+
 
 #Function to get responses from API
 def GetAPIResponse(APIEndpointURL):
@@ -41,3 +55,8 @@ results_df = pd.DataFrame(json['results'])
 
 print(results_df)
 
+#try this out 
+finalJson = GetAndAppendAllToOneJson()
+print(finalJson)
+results_df2 = pd.DataFrame(finalJson)
+print(results_df2)
